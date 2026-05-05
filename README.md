@@ -1,4 +1,4 @@
-# approval-rate-prediction
+# Approval-rate-prediction
 Machine learning model to predict transaction approval probability using business features.
 
 # Approval Rate Prediction
