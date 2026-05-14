@@ -1,4 +1,5 @@
 # Approval-rate-prediction
+
 Machine learning model to predict transaction approval probability using business features.
 
 # Approval Rate Prediction
@@ -15,20 +16,46 @@ The objective is to improve approval rate monitoring while balancing risk and co
 - How can this insight improve conversion without increasing risk?
 
 ## Dataset
-The dataset includes transaction-level features such as:
-- Amount
-- Country
-- Payment method
-- Merchant category
-- Time-based features
-- Approval outcome (target)
+
+This project uses the **UCI Credit Card Default dataset** as a proxy for
+transaction approval outcomes.
+
+- **Source:** UCI Machine Learning Repository
+- **Original target:** `default_payment_next_month`
+- **Adapted target:**
+  - `approved = 1 - default_payment_next_month`
+
+### Rationale
+In a real payment authorization context, transactions that are predicted
+to default would typically be declined or flagged as high risk.
+This dataset provides a reasonable public proxy to study:
+- approval probability
+- class imbalance
+- risk vs conversion trade-offs
+
+The dataset is publicly available and contains no sensitive or personal
+identifiable information.
+
+## Project Structure
+
+
+approval-rate-prediction/
+├── data/          # Raw and processed datasets
+├── notebooks/     # EDA and exploratory analysis
+├── src/           # Reproducible training and evaluation code
+├── docs/          # Technical decisions and experiment tracking
+└── tests/         # Minimal tests for data integrity
+
 
 ## Methodology
-1. Data preprocessing and feature engineering
-2. Baseline model using Logistic Regression
-3. Evaluation using ROC-AUC and Precision/Recall
-4. Comparison with tree-based models
-5. Feature importance analysis
+
+1. Data loading and validation
+2. Train / validation / test split with stratification
+3. Baseline model using Logistic Regression
+4. Evaluation using ROC-AUC and Precision/Recall
+5. Threshold optimization based on business constraints
+6. Model interpretability and feature analysis
+
 
 ## Why These Metrics
 Accuracy alone is not sufficient due to class imbalance.
